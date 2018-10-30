@@ -27,7 +27,7 @@ namespace House
         }
 
         //Constructor
-        protected Location(string name)
+        public Location(string name)
         {
             Name = name;
         }
