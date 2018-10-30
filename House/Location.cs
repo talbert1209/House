@@ -7,14 +7,6 @@ namespace House
         //Fields & Properties
         public string Name { get; private set; }
         public Location[] Exits;
-
-        //Constructor
-        protected Location(string name)
-        {
-            Name = name;
-        }
-
-        //Methods
         public virtual string Description
         {
             get
@@ -33,5 +25,14 @@ namespace House
                 return description;
             }
         }
+
+        //Constructor
+        protected Location(string name)
+        {
+            Name = name;
+        }
+
+        //Methods
+        
     }
 }
