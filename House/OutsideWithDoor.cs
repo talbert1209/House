@@ -2,11 +2,12 @@
 {
     public class OutsideWithDoor : Outside, IHasExteriorDoor
     {
-        public OutsideWithDoor(string name) : base(name)
+        public OutsideWithDoor(string name, bool hot, string doorDescription) : base(name, hot)
         {
+            DoorDescription = doorDescription;
         }
 
-        public int DoorDescription { get; }
+        public string DoorDescription { get; }
         public string DoorLocation { get; set; }
     }
 }

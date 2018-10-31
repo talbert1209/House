@@ -2,11 +2,12 @@
 {
     public class RoomWithDoor : Room, IHasExteriorDoor
     {
-        public RoomWithDoor(string name) : base(name)
+        public RoomWithDoor(string name, string decoration, string doorDescription) : base(name, decoration)
         {
+            DoorDescription = doorDescription;
         }
 
-        public int DoorDescription { get; }
+        public string DoorDescription { get; }
         public string DoorLocation { get; set; }
     }
 }

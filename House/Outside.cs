@@ -3,6 +3,7 @@
     public class Outside : Location
     {
         private bool _hot;
+
         public Outside(string name, bool hot) : base(name)
         {
             _hot = hot;

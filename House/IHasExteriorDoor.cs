@@ -2,7 +2,7 @@
 {
     public interface IHasExteriorDoor
     {
-        int DoorDescription { get; }
+        string DoorDescription { get; }
         string DoorLocation { get; set; }
     }
 }
