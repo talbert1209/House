@@ -2,7 +2,7 @@
 {
     public class Outside : Location
     {
-        private bool _hot;
+        private readonly bool _hot;
 
         public Outside(string name, bool hot) : base(name)
         {

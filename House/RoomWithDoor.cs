@@ -8,6 +8,11 @@
         }
 
         public string DoorDescription { get; }
-        public string DoorLocation { get; set; }
+        public Location DoorLocation { get; set; }
+
+        public override string Description
+        {
+            get { return base.Description + $"There is {DoorDescription}."; }
+        }
     }
 }

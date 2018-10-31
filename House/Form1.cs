@@ -11,10 +11,13 @@ namespace House
         private RoomWithDoor _kitchen;
         private Room _diningRoom;
 
+        private Location _currentLocation;
+
         public Form1()
         {
             InitializeComponent();
             CreateObjects();
+            MoveToANewLocation(_frontYard);
         }
 
         public void CreateObjects()
@@ -32,7 +35,45 @@ namespace House
             _livingRoom.Exits = new Location[] {_diningRoom};
             _kitchen.Exits = new Location[] {_diningRoom};
             _diningRoom.Exits = new Location[] {_livingRoom, _kitchen};
-            
+
+            _frontYard.DoorLocation = _livingRoom;
+            _livingRoom.DoorLocation = _frontYard;
+            _backYard.DoorLocation = _kitchen;
+            _kitchen.DoorLocation = _backYard;
+        }
+
+        public void MoveToANewLocation(Location newLocation)
+        {
+            _currentLocation = newLocation;
+            exits.Items.Clear();
+            foreach (var exit in _currentLocation.Exits)
+            {
+                exits.Items.Add(exit.Name);
+            }
+
+            exits.SelectedIndex = 0;
+
+            description.Text = _currentLocation.Description;
+
+            if (_currentLocation is IHasExteriorDoor)
+            {
+                goThroughTheDoor.Enabled = true;
+            }
+            else
+            {
+                goThroughTheDoor.Enabled = false;
+            }
+        }
+
+        private void goHere_Click(object sender, System.EventArgs e)
+        {
+            MoveToANewLocation(_currentLocation.Exits[exits.SelectedIndex]);
+        }
+
+        private void goThroughTheDoor_Click(object sender, System.EventArgs e)
+        {
+            if (_currentLocation is IHasExteriorDoor currentDoorLocation)
+                MoveToANewLocation(currentDoorLocation.DoorLocation);
         }
     }
 }
